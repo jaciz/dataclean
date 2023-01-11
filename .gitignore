@@ -1,0 +1,4 @@
+# Ignore files
+build/
+dataclean.egg-info/
+__pycache__/
