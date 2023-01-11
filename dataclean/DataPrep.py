@@ -17,6 +17,7 @@ def format_date_col(df, date_col='date'):
         year, month, day = str(date.date()).split("-")
         return f"{month}/{day}/{year}"
     
+    df[date_col] = pd.to_datetime(df[date_col])
     return df[date_col].agg(date_to_str)
 
 
