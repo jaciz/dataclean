@@ -49,3 +49,20 @@ def intersection_between_df(df, groupby_id, col):
     """
 
     return set.intersection(*[set(group[col]) for name, group in df.groupby(groupby_id)])
+
+def remove_outliers_iqr(df, cols):
+    """Uses the interquartile method to remove the outliers
+
+    Args:
+        df (pandas DataFrame): Data
+        cols (str or list of str): Columns you want to remove outliers from
+
+    Returns:
+        pandas DataFrame: Data with only the interquartile range
+    """
+    q1 = df[cols].quantile(0.25)
+    q3 = df[cols].quantile(0.75)
+    iqr = q3 - q1
+
+    condition = ~((df[cols] < (q1 - 1.5 * iqr)) | (df[cols] > (q3 + 1.5 * iqr))).any(axis=1)
+    return df[condition]
