@@ -6,6 +6,8 @@
 
 Use `pip install git+https://github.com/jaciz/dataclean.git` to install the library
 
+Use `pip install git+https://github.com/jaciz/dataclean.git --upgrade` to update the library
+
 ## Example
 
 ### `DataPrep`
