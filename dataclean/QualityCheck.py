@@ -16,7 +16,8 @@ def check_duplicates(df, cols=None):
     if cols is None:
         cols = ['ID']
     try:
-        dups = pd.concat(g for _, g in df.groupby(cols) if len(g) > 1)
+        # pd.concat(g for _, g in df.groupby(cols) if len(g) > 1)
+        dups = df[df.duplicated(subset=[cols])]
     except ValueError:
         print("No duplicates")
     else:
