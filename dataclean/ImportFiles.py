@@ -2,7 +2,6 @@ import pandas as pd
 import glob
 import os
 import polars as pl
-import pandas as pl
 # Increase column width to see more of the data
 pl.Config.set_fmt_str_lengths(200)
 
