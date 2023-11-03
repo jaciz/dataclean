@@ -51,11 +51,11 @@ def read_multiple_txt_with_filename(path, dtype=None, parse_dates=None, skiprows
     return df
 
 # Functions written in polars
-def read_multiple_txt_with_filename_polars(path, dtypes=None, parse_dates=False, skip_rows=0, separator=',', has_header=True, null_values=None, new_columns=None, file_extension='csv'):
+def read_multiple_txt_with_filename_polars(path, dtypes=None, try_parse_dates=False, skip_rows=0, separator=',', has_header=True, null_values=None, new_columns=None, file_extension='csv'):
     df = pl.DataFrame().lazy()
     for p in list(glob.glob(f'{path}/*.{file_extension}')):
         subset = (
-            pl.read_csv(p, dtypes=dtypes, parse_dates=parse_dates, skip_rows=skip_rows, has_header=has_header, separator=separator, new_columns=new_columns, infer_schema_length=0, null_values=null_values)
+            pl.read_csv(p, dtypes=dtypes, try_parse_dates=try_parse_dates, skip_rows=skip_rows, has_header=has_header, separator=separator, new_columns=new_columns, infer_schema_length=0, null_values=null_values)
             .lazy()
         ).with_column(pl.lit(os.path.basename(p)).alias('file'))
         
