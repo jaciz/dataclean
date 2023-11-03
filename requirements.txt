@@ -20,6 +20,7 @@ numpy @ file:///croot/numpy_and_numpy_base_1672336185480/work
 packaging @ file:///croot/packaging_1671697413597/work
 pandas==1.5.2
 Pillow==9.4.0
+polars==0.19.12
 pyparsing==3.0.9
 pyrsistent==0.19.3
 python-dateutil @ file:///tmp/build/80754af9/python-dateutil_1626374649649/work
