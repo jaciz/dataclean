@@ -57,7 +57,7 @@ def read_multiple_txt_with_filename_polars(path, dtypes=None, try_parse_dates=Fa
         subset = (
             pl.read_csv(p, dtypes=dtypes, try_parse_dates=try_parse_dates, skip_rows=skip_rows, has_header=has_header, separator=separator, new_columns=new_columns, infer_schema_length=0, null_values=null_values)
             .lazy()
-        ).with_column(pl.lit(os.path.basename(p)).alias('file'))
+        ).with_columns(pl.lit(os.path.basename(p)).alias('file'))
         
 
         df = pl.concat([df, subset], how='diagonal')
