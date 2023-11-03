@@ -23,6 +23,12 @@ def check_duplicates(df, cols=None):
     else:
         return dups
 
+def check_duplicates_polars(df, cols=None):
+    if cols is None:
+        cols=['ID']
+    return df.filter(pl.struct([cols]).is_duplicated())
+        
+
 def check_missing_daily_dates(df, col='DATE'):
     """Converts your date column in datetime data type and then checks for any missing daily dates between the minimum and maximum
 
